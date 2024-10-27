@@ -15,6 +15,9 @@ def authorization(request):
         nickname = request.POST.get("nickname")
         email = request.POST.get("email")
         password = request.POST.get("password")
+# Modify form
+        if name is "" or nickname is "" or email is "":
+            raise ValueError("Value Error")
 
         user = User(
             name=name,
