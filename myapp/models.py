@@ -2,14 +2,15 @@ from django.utils import timezone
 
 from django.db import models
 from django.db.models import Q
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
 class User(models.Model):
-    surname = models.CharField(max_length=50, default="")
-    lastname = models.CharField(max_length=50, default="")
-    nickname = models.CharField(max_length=50, default="")
+    surname = models.CharField(max_length=50, default=None)
+    lastname = models.CharField(max_length=50, default=None)
+    nickname = models.CharField(max_length=50, default=None)
     email = models.EmailField(default=None)
-    password = models.CharField(max_length=20, default="")
+    password = models.CharField(validators=[MinLengthValidator(8)], max_length=24, default=None)
     account_creation_date = models.DateTimeField(default=timezone.now())
 
     class Meta:
