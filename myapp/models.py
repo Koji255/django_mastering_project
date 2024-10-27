@@ -6,8 +6,8 @@ from django.core.validators import MinLengthValidator
 
 # Create your models here.
 class User(models.Model):
+    name = models.CharField(max_length=50, default=None)
     surname = models.CharField(max_length=50, default=None)
-    lastname = models.CharField(max_length=50, default=None)
     nickname = models.CharField(max_length=50, default=None)
     email = models.EmailField(default=None)
     password = models.CharField(validators=[MinLengthValidator(8)], max_length=24, default=None)
