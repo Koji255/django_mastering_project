@@ -6,6 +6,14 @@ from .models import User
 # Create your views here.
 def index(request):
     return HttpResponse('all works')
+# Try to use template view
+def get_users(request):
+    users = User.objects.all()
+
+    return render(request, "myapp/get_users.html", {
+        "users": users,
+    })
+
 
 def authorization(request):
     if request.method == "POST":
@@ -16,7 +24,7 @@ def authorization(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
 # Modify form
-        if name is "" or nickname is "" or email is "":
+        if name == "" or nickname == "" or email == "":
             raise ValueError("Value Error")
 
         user = User(
